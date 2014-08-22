@@ -147,6 +147,7 @@ public class MainActivity extends FragmentActivity {
 				newFragment.show(getSupportFragmentManager(), "timePicker");
 				stopje.setOnBlocks(selected_datetime);
 				updateValues();
+				Toast.makeText(getApplicationContext(), "onclickfinished", Toast.LENGTH_SHORT).show();
 				
 			}
 		});
@@ -251,8 +252,10 @@ public class MainActivity extends FragmentActivity {
     }
     
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment(selected_datetime);
+        DialogFragment newFragment = new DatePickerFragment(getApplicationContext(), selected_datetime);
         newFragment.show(getSupportFragmentManager(), "datePicker");
+//		Toast.makeText(getApplicationContext(), "showdatepickermethodcomplete", Toast.LENGTH_SHORT).show();
+		
     }
     
 //    public void showTimePickerDialog(View v, Calendar sldt) {
@@ -260,7 +263,7 @@ public class MainActivity extends FragmentActivity {
 //        newFragment.show(getSupportFragmentManager(), "timePicker");
 //    }
 
-	private void updateValues() {
+	 public void updateValues() {
 		
 //		stopje.setStopOver(airport, on_blocks_datetime, off_blocks_datetime, sundries.doubleValue(), lunch.doubleValue(), diner.doubleValue());
 //
