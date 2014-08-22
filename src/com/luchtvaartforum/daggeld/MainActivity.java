@@ -79,6 +79,8 @@ public class MainActivity extends FragmentActivity {
 		lunch_edittext = (EditText) findViewById(R.id.lunch);
 		diner_edittext = (EditText) findViewById(R.id.diner);
 		airport_edittext = (EditText) findViewById(R.id.airport);
+		on_blocks_datetime = stopje.getOnBlocksDatetime();
+		off_blocks_datetime = stopje.getOffBlocksDatetime();
 		
 		if (null != savedInstanceState) {
 			on_blocks_datetime.set(Calendar.YEAR, savedInstanceState.getInt("onby"));
@@ -104,17 +106,19 @@ public class MainActivity extends FragmentActivity {
 			stopje.setDinerAllowance(diner);
 //			updateValues();
 //			Toast.makeText(getApplicationContext(), "tataaa!", Toast.LENGTH_SHORT).show();
+//			updateValues();
 		}
 		
-		{
-			on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
-			on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
-			off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
-			off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
-			output_view.setText(Double.toString(stopje.getAllowance()));
-		}
-//		updateValues();
-//		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
+//		{
+//			on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
+//			on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
+//			off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
+//			off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
+//			output_view.setText(Double.toString(stopje.getAllowance()));
+//		
+//			}
+		updateValues();
+		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
 
         on_blocks_date_view.setOnClickListener(new TextView.OnClickListener() {
 			@Override
@@ -127,8 +131,8 @@ public class MainActivity extends FragmentActivity {
 //				on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
 //				DialogFragment newFragment = new DatePickerFragment(selected_datetime);
 //                newFragment.show(getSupportFragmentManager(), "datePicker");
-//				stopje.setOnBlocks(selected_datetime);
-//				updateValues();
+			
+				updateValues();
 			}
 		});
         
@@ -287,33 +291,33 @@ public class MainActivity extends FragmentActivity {
 		//		lunch_edittext.setText(stopje.getLunchAllowance().toString());
 //		diner_edittext.setText(stopje.getDinerAllowance().toString());
 		
-		if(sundries_edittext.getText().toString().contentEquals( "" )) {
-			stopje.setSundries_24(0d);
-		}
-		else {
-			stopje.setSundries_24(new Double(sundries_edittext.getText().toString()));
-		}
-		
-		if(lunch_edittext.getText().toString().contentEquals( "" )) {
-			stopje.setLunchAllowance(0d);
-		}
-		else {
-			stopje.setLunchAllowance(new Double(lunch_edittext.getText().toString()));
-		}
-		
-		if(diner_edittext.getText().toString().contentEquals( "" )) {
-			stopje.setDinerAllowance(0d);
-		}
-		else {
-			stopje.setDinerAllowance(new Double(diner_edittext.getText().toString()));
-		}
-		
-		if(airport_edittext.getText().toString().contentEquals( "")) {
-			stopje.setAirport("");
-		}
-		else {
-			stopje.setAirport(airport_edittext.getText().toString());
-		}
+//		if(sundries_edittext.getText().toString().contentEquals( "" )) {
+//			stopje.setSundries_24(0d);
+//		}
+//		else {
+//			stopje.setSundries_24(new Double(sundries_edittext.getText().toString()));
+//		}
+//		
+//		if(lunch_edittext.getText().toString().contentEquals( "" )) {
+//			stopje.setLunchAllowance(0d);
+//		}
+//		else {
+//			stopje.setLunchAllowance(new Double(lunch_edittext.getText().toString()));
+//		}
+//		
+//		if(diner_edittext.getText().toString().contentEquals( "" )) {
+//			stopje.setDinerAllowance(0d);
+//		}
+//		else {
+//			stopje.setDinerAllowance(new Double(diner_edittext.getText().toString()));
+//		}
+//		
+//		if(airport_edittext.getText().toString().contentEquals( "")) {
+//			stopje.setAirport("");
+//		}
+//		else {
+//			stopje.setAirport(airport_edittext.getText().toString());
+//		}
 		
 //		stopje.setOnBlocks(on_blocks_datetime);
 //		stopje.setOffBlocks(off_blocks_datetime);

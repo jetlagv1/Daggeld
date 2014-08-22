@@ -27,6 +27,7 @@ implements DatePickerDialog.OnDateSetListener {
 	@Override
 	public void onDateSet(DatePicker p1, int year, int month, int day)
 	{
+		
 		selected_datetime.set(year, month, day);
 	}
 

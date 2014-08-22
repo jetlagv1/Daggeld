@@ -21,7 +21,7 @@ public class StopOver {
 	private Double diner_allowance = 0d;
 	
 	public StopOver(String airport, Calendar on_blocks, Calendar off_blocks, 
-			double sundries_24, double lunch_allowance, double diner_allowance) {
+			Double sundries_24, Double lunch_allowance, Double diner_allowance) {
 		this.airport = airport;
 		this.sundries_24 = sundries_24;
 		this.lunch_allowance = lunch_allowance;
