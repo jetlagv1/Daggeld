@@ -6,13 +6,20 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.*;
 import java.util.Calendar;
+import android.view.View;
+import android.content.*;
+import java.text.SimpleDateFormat;
 
 public class TimePickerFragment extends DialogFragment
 implements TimePickerDialog.OnTimeSetListener {
 	private Calendar selected_datetime;
+	private TextView  selected_textview;
+	SimpleDateFormat date_format;
 
-	public TimePickerFragment(Calendar sldt) {
+	public TimePickerFragment(TextView sltv, Calendar sldt, SimpleDateFormat sldf) {
 		this.selected_datetime = sldt;
+		this.selected_textview = sltv;
+		this.date_format = sldf;
 	}
 	
 	@Override
@@ -27,6 +34,7 @@ implements TimePickerDialog.OnTimeSetListener {
 		
 		selected_datetime.set(Calendar.HOUR_OF_DAY, h);
 		selected_datetime.set(Calendar.MINUTE, m);
+		selected_textview.setText(date_format.format(selected_datetime.getTime()));
 		//updateValues();
 		//testClickButton();
 	}

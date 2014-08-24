@@ -9,8 +9,8 @@ import java.util.*;
 
 public class StopOver {
 	private String airport;
-	private Calendar onbdt = Calendar.getInstance();
-	private Calendar offbdt = Calendar.getInstance();
+	private Calendar onbdt;
+	private Calendar offbdt;
 	private int onbth;
 	private int onbtm;
 	private int offbth;
@@ -31,8 +31,12 @@ public class StopOver {
 	}
 	
 	public StopOver() {
-//		onbdt = Calendar.getInstance();
-//		offbdt = Calendar.getInstance();
+		onbdt = Calendar.getInstance();
+		offbdt = Calendar.getInstance();
+		onbth = onbdt.get(Calendar.HOUR_OF_DAY);
+		onbtm = onbdt.get(Calendar.MINUTE);
+		offbth = offbdt.get(Calendar.HOUR_OF_DAY);
+		offbtm = offbdt.get(Calendar.MINUTE);
 //		airport = "";
 //		sundries_24 = 0d;
 //		lunch_allowance = 0d;
@@ -59,15 +63,15 @@ public class StopOver {
 	}
 	
 	public void setOnBlocks(Calendar on_blocks) {
-		onbdt.set(Calendar.YEAR, on_blocks.get(Calendar.YEAR));
-		onbdt.set(Calendar.MONTH, on_blocks.get(Calendar.MONTH));
-		onbdt.set(Calendar.DAY_OF_MONTH, on_blocks.get(Calendar.DAY_OF_MONTH));	
-		onbdt.set(Calendar.HOUR_OF_DAY, on_blocks.get(Calendar.HOUR_OF_DAY));
-		onbdt.set(Calendar.MINUTE, on_blocks.get(Calendar.MINUTE));
+		onbdt.setTime(on_blocks.getTime());
+//		onbdt.set(Calendar.YEAR, on_blocks.get(Calendar.YEAR));
+//		onbdt.set(Calendar.MONTH, on_blocks.get(Calendar.MONTH));
+//		onbdt.set(Calendar.DAY_OF_MONTH, on_blocks.get(Calendar.DAY_OF_MONTH));	
+//		onbdt.set(Calendar.HOUR_OF_DAY, on_blocks.get(Calendar.HOUR_OF_DAY));
+//		onbdt.set(Calendar.MINUTE, on_blocks.get(Calendar.MINUTE));
 		onbth = onbdt.get(Calendar.HOUR_OF_DAY);
 		onbtm = onbdt.get(Calendar.MINUTE);
-		offbth = offbdt.get(Calendar.HOUR_OF_DAY);
-		offbtm = offbdt.get(Calendar.MINUTE);
+		
 	}
 	
 	public void setOnBlocksTimeHour(int onbth) {
@@ -81,11 +85,14 @@ public class StopOver {
 	}
 	
 	public void setOffBlocks(Calendar off_blocks) {
-		offbdt.set(Calendar.YEAR, off_blocks.get(Calendar.YEAR));
-		offbdt.set(Calendar.MONTH, off_blocks.get(Calendar.MONTH));
-		offbdt.set(Calendar.DAY_OF_MONTH, off_blocks.get(Calendar.DAY_OF_MONTH));	
-		offbdt.set(Calendar.HOUR_OF_DAY, off_blocks.get(Calendar.HOUR_OF_DAY));
-		offbdt.set(Calendar.MINUTE, off_blocks.get(Calendar.MINUTE));
+		offbdt.setTime(off_blocks.getTime());
+//		offbdt.set(Calendar.YEAR, off_blocks.get(Calendar.YEAR));
+//		offbdt.set(Calendar.MONTH, off_blocks.get(Calendar.MONTH));
+//		offbdt.set(Calendar.DAY_OF_MONTH, off_blocks.get(Calendar.DAY_OF_MONTH));	
+//		offbdt.set(Calendar.HOUR_OF_DAY, off_blocks.get(Calendar.HOUR_OF_DAY));
+//		offbdt.set(Calendar.MINUTE, off_blocks.get(Calendar.MINUTE));
+		offbth = offbdt.get(Calendar.HOUR_OF_DAY);
+		offbtm = offbdt.get(Calendar.MINUTE);
 	}
 
 	public void setOffBlocksTimeHour(int offbth) {

@@ -98,27 +98,11 @@ public class MainActivity extends FragmentActivity {
 			lunch = savedInstanceState.getDouble("lunch");
 			diner = savedInstanceState.getDouble("diner");
 			stopje.setStopOver(airport, on_blocks_datetime, off_blocks_datetime, sundries, lunch, diner);
-			stopje.setOnBlocks(on_blocks_datetime);
-			stopje.setOffBlocks(off_blocks_datetime);
-			stopje.setAirport(airport);
-			stopje.setSundries_24(sundries);
-			stopje.setLunchAllowance(lunch);
-			stopje.setDinerAllowance(diner);
-//			updateValues();
 //			Toast.makeText(getApplicationContext(), "tataaa!", Toast.LENGTH_SHORT).show();
 //			updateValues();
 		}
-		
-//		{
-//			on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
-//			on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
-//			off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
-//			off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
-//			output_view.setText(Double.toString(stopje.getAllowance()));
-//		
-//			}
 		updateValues();
-		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
 
         on_blocks_date_view.setOnClickListener(new TextView.OnClickListener() {
 			@Override
@@ -126,13 +110,13 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = on_blocks_datetime;
 				selected_textview = on_blocks_date_view;
 				selected_format = date_format;
-				showDatePickerDialog(v);
-				stopje.setOnBlocks(selected_datetime);
+//				showDatePickerDialog(v);
+//				stopje.setOnBlocks(selected_datetime);
 //				on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
-//				DialogFragment newFragment = new DatePickerFragment(selected_datetime);
-//                newFragment.show(getSupportFragmentManager(), "datePicker");
-			
-				updateValues();
+				DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
+				newFragment.show(getSupportFragmentManager(), "datePicker");
+//				updateValues();
+//				Toast.makeText(getApplicationContext(), "onclickfinished", Toast.LENGTH_SHORT).show();
 			}
 		});
         
@@ -143,11 +127,11 @@ public class MainActivity extends FragmentActivity {
 				selected_textview = on_blocks_time_view;
 				selected_format = time_format;
 //				showTimePickerDialog(v);
-				DialogFragment newFragment = new TimePickerFragment(selected_datetime);
+				DialogFragment newFragment = new TimePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "timePicker");
-				stopje.setOnBlocks(selected_datetime);
-				updateValues();
-				Toast.makeText(getApplicationContext(), "onclickfinished", Toast.LENGTH_SHORT).show();
+//				stopje.setOnBlocks(selected_datetime);
+//				updateValues();
+				
 				
 			}
 		});
@@ -158,9 +142,9 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = off_blocks_datetime;
 				selected_textview = off_blocks_date_view;
 				selected_format = date_format;
-				showDatePickerDialog(v);
-//				DialogFragment newFragment = new DatePickerFragment(selected_datetime);
-//                newFragment.show(getSupportFragmentManager(), "datePicker");
+//				showDatePickerDialog(v);
+				DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
+				newFragment.show(getSupportFragmentManager(), "datePicker");
 //				stopje.setOffBlocks(selected_datetime);
 //				updateValues();
 			}
@@ -173,10 +157,10 @@ public class MainActivity extends FragmentActivity {
 				selected_textview = off_blocks_time_view;
 				selected_format = time_format;
 //				showTimePickerDialog(v);
-				DialogFragment newFragment = new TimePickerFragment(selected_datetime);
+				DialogFragment newFragment = new TimePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "timePicker");
-				stopje.setOffBlocks(selected_datetime);
-				updateValues();
+//				stopje.setOffBlocks(selected_datetime);
+//				updateValues();
 			}
 		});
 			
@@ -251,12 +235,12 @@ public class MainActivity extends FragmentActivity {
         return true;
     }
     
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment(getApplicationContext(), selected_datetime);
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+//    public void showDatePickerDialog(View v) {
+//        DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
+//        newFragment.show(getSupportFragmentManager(), "datePicker");
 //		Toast.makeText(getApplicationContext(), "showdatepickermethodcomplete", Toast.LENGTH_SHORT).show();
-		
-    }
+//		
+//    }
     
 //    public void showTimePickerDialog(View v, Calendar sldt) {
 //        DialogFragment newFragment = new TimePickerFragment(stopje, sldt);
@@ -322,17 +306,18 @@ public class MainActivity extends FragmentActivity {
 //			stopje.setAirport(airport_edittext.getText().toString());
 //		}
 		
-//		stopje.setOnBlocks(on_blocks_datetime);
-//		stopje.setOffBlocks(off_blocks_datetime);
+		stopje.setOnBlocks(on_blocks_datetime);
+		stopje.setOffBlocks(off_blocks_datetime);
+		
 		on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
 		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
 		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
 		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
 		
-		output_view.setText(Double.toString(stopje.getAllowance()));
+//		output_view.setText(Double.toString(stopje.getAllowance()));
 		
 		//Toast.makeText(getApplicationContext(), "updated", Toast.LENGTH_SHORT).show();
-		Toast.makeText(getApplicationContext(), Double.toString(stopje.getAllowance()), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(), Double.toString(stopje.getAllowance()), Toast.LENGTH_SHORT).show();
 	}
 
     public void testClickButton() {
