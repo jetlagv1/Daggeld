@@ -9,13 +9,10 @@ import java.util.*;
 
 public class StopOver {
 	private String airport;
-	private Calendar onbdt;
-	private Calendar offbdt;
-	private int onbth;
-	private int onbtm;
-	private int offbth;
-	private int offbtm;
-	//private Double sundries = 0d;
+	private Calendar onblocksdatetime;
+	private Calendar offblocksdatetime;
+	private Time onblockstime;
+	private Time offblockstime;
 	private Double sundries_24 = 0d;
 	private Double lunch_allowance = 0d;
 	private Double diner_allowance = 0d;
@@ -28,19 +25,17 @@ public class StopOver {
 		this.diner_allowance = diner_allowance;
 		setOnBlocks(on_blocks);
 		setOffBlocks(off_blocks);
+		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		
 	}
 	
 	public StopOver() {
-		onbdt = Calendar.getInstance();
-		offbdt = Calendar.getInstance();
-		onbth = onbdt.get(Calendar.HOUR_OF_DAY);
-		onbtm = onbdt.get(Calendar.MINUTE);
-		offbth = offbdt.get(Calendar.HOUR_OF_DAY);
-		offbtm = offbdt.get(Calendar.MINUTE);
-//		airport = "";
-//		sundries_24 = 0d;
-//		lunch_allowance = 0d;
-//		diner_allowance = 0d;
+		onblocksdatetime = Calendar.getInstance();
+		offblocksdatetime = Calendar.getInstance();
+		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,61 +43,48 @@ public class StopOver {
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void setStopOver(String airport, Calendar on_blocks, Calendar off_blocks, 
-			Double sundries_24, Double lunch_allowance, Double diner_allowance) {
-		
-			setOnBlocks(on_blocks);
-			setOffBlocks(off_blocks);
-			this.airport = airport;
-			this.sundries_24 = sundries_24;
-			this.lunch_allowance = lunch_allowance;
-			this.diner_allowance = diner_allowance;
-		}
+							Double sundries_24, Double lunch_allowance, Double diner_allowance) {
+
+		onblocksdatetime.setTime(on_blocks.getTime());
+		offblocksdatetime.setTime(off_blocks.getTime());
+		this.airport = airport;
+		this.sundries_24 = sundries_24;
+		this.lunch_allowance = lunch_allowance;
+		this.diner_allowance = diner_allowance;
+	}
 		
 	public void setAirport(String airport) {
 		this.airport = airport;
 	}
 	
 	public void setOnBlocks(Calendar on_blocks) {
-		onbdt.setTime(on_blocks.getTime());
-//		onbdt.set(Calendar.YEAR, on_blocks.get(Calendar.YEAR));
-//		onbdt.set(Calendar.MONTH, on_blocks.get(Calendar.MONTH));
-//		onbdt.set(Calendar.DAY_OF_MONTH, on_blocks.get(Calendar.DAY_OF_MONTH));	
-//		onbdt.set(Calendar.HOUR_OF_DAY, on_blocks.get(Calendar.HOUR_OF_DAY));
-//		onbdt.set(Calendar.MINUTE, on_blocks.get(Calendar.MINUTE));
-		onbth = onbdt.get(Calendar.HOUR_OF_DAY);
-		onbtm = onbdt.get(Calendar.MINUTE);
-		
+		onblocksdatetime.setTime(on_blocks.getTime());
+		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 	}
 	
 	public void setOnBlocksTimeHour(int onbth) {
-		this.onbth = onbth;
-		onbdt.set(Calendar.HOUR_OF_DAY, onbth);
+		onblocksdatetime.set(Calendar.HOUR_OF_DAY, onbth);
+		onblockstime.set (0, onblocksdatetime.get(Calendar.MINUTE), onbth, 0, 0, 0);
 	}
 	
 	public void setOnBlocksTimeMinute(int onbtm) {
-		this.onbtm = onbtm;
-		onbdt.set(Calendar.MINUTE, onbtm);
+		onblocksdatetime.set(Calendar.MINUTE, onbtm);
+		onblockstime.set (0, onbtm, onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 	}
 	
 	public void setOffBlocks(Calendar off_blocks) {
-		offbdt.setTime(off_blocks.getTime());
-//		offbdt.set(Calendar.YEAR, off_blocks.get(Calendar.YEAR));
-//		offbdt.set(Calendar.MONTH, off_blocks.get(Calendar.MONTH));
-//		offbdt.set(Calendar.DAY_OF_MONTH, off_blocks.get(Calendar.DAY_OF_MONTH));	
-//		offbdt.set(Calendar.HOUR_OF_DAY, off_blocks.get(Calendar.HOUR_OF_DAY));
-//		offbdt.set(Calendar.MINUTE, off_blocks.get(Calendar.MINUTE));
-		offbth = offbdt.get(Calendar.HOUR_OF_DAY);
-		offbtm = offbdt.get(Calendar.MINUTE);
+		offblocksdatetime.setTime(off_blocks.getTime());
+		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 	}
 
 	public void setOffBlocksTimeHour(int offbth) {
-		this.offbth = offbth;
-		offbdt.set(Calendar.HOUR_OF_DAY, offbth);
+		offblocksdatetime.set(Calendar.HOUR_OF_DAY, offbth);
+		offblockstime.set (0, offblocksdatetime.get(Calendar.MINUTE), offbth, 0, 0, 0);
 	}
 
 	public void setOffBlocksTimeMinute(int offbtm) {
-		this.offbtm = offbtm;
-		offbdt.set(Calendar.MINUTE, offbtm);
+		offblocksdatetime.set(Calendar.MINUTE, offbtm);
+		offblockstime.set (0, offbtm, offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 	}
 	
 	public void setSundries_24(Double sundries_24) {
@@ -126,27 +108,27 @@ public class StopOver {
 	}
 	
 	public Calendar getOnBlocksDatetime() {
-		return onbdt;
+		return onblocksdatetime;
 	}
 	
 	public int getOnBlockTimeHour() {
-		return onbth;
+		return onblocksdatetime.get(Calendar.HOUR_OF_DAY);
 	}
 
 	public int getOnBlockTimeMinute() {
-		return onbtm;
+		return onblocksdatetime.get(Calendar.MINUTE);
 	}
 	
 	public Calendar getOffBlocksDatetime() {
-		return offbdt;
+		return offblocksdatetime;
 	}
 	
 	public int getOffBlockTimeHour() {
-		return offbth;
+		return offblocksdatetime.get(Calendar.HOUR_OF_DAY);
 	}
 
 	public int getOffBlockTimeMinute() {
-		return offbtm;
+		return offblocksdatetime.get(Calendar.MINUTE);
 	}
 	
 	public double getAllowance() {
@@ -173,42 +155,31 @@ public class StopOver {
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private boolean isLunch() {
-		if (calcMinutesOnGround() < 180) 
-			return false;
 			
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) < 13) && (offbdt.get(Calendar.HOUR_OF_DAY) >= 13))
+		if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && ((calcMinutesMinusDaysOnGround() > 180) || (calcDaysOnGround() > 0)))
 			return true;
 			
-		else if (calcMinutesMinusDaysOnGround() <= (11 * 60))
-			return false;
-			
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) >= 13) && (offbdt.get(Calendar.HOUR_OF_DAY) >= 13))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && onblocksdatetime.before(offblocksdatetime) && offblockstime.before(onblockstime))
 			return true;
 			
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) < 13) && (offbdt.get(Calendar.HOUR_OF_DAY) < 13))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (calcHoursMinusDaysOnGround() > 13))
 			return true;
 			
 		return false;
 	}
 
 	private boolean isDiner() {
-		if (calcMinutesOnGround() < 180) 
-			return false;
-
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) < 20) && (offbdt.get(Calendar.HOUR_OF_DAY) >= 20))
+		if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && ((calcMinutesMinusDaysOnGround() > 180) || (calcDaysOnGround() > 0)))
 			return true;
 
-		else if (calcMinutesMinusDaysOnGround() <= (4 * 60))
-			return false;
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && onblocksdatetime.before(offblocksdatetime) && offblockstime.before(onblockstime))
+			return true;
 			
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) >= 20) && (offbdt.get(Calendar.HOUR_OF_DAY) >= 20))
-			return true;
-
-		else if ((onbdt.get(Calendar.HOUR_OF_DAY) < 20) && (offbdt.get(Calendar.HOUR_OF_DAY) < 20))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && (calcHoursMinusDaysOnGround() > 4))
 			return true;
 
 		return false;
-		}
+	}
 
 	private Double calcSundries() {
 		Double s;
@@ -238,7 +209,7 @@ public class StopOver {
 		return calcMinutesMinusDaysOnGround() / 60;
 	}
 	
-	public int calcDaysOnGround() {		
+	public Integer calcDaysOnGround() {		
 		return (calcMinutesOnGround() / 1440);
 	}
 	
@@ -247,9 +218,9 @@ public class StopOver {
 	}
 	
 	public Integer calcMinutesOnGround() {
-		if (offbdt.before(onbdt))
+		if (offblocksdatetime.before(onblocksdatetime))
 			return 0;
-		return (int) (offbdt.getTimeInMillis() - onbdt.getTimeInMillis()) / 60000;
+		return (int) (offblocksdatetime.getTimeInMillis() - onblocksdatetime.getTimeInMillis()) / 60000;
 	}
 	
 	public Integer calcNrLunch() {
