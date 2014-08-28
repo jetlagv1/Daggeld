@@ -26,9 +26,9 @@ public class MainActivity extends FragmentActivity {
 	private Calendar selected_datetime;
 	private Calendar on_blocks_datetime;
 	private Calendar off_blocks_datetime;
-	private Double sundries = new Double(0); // BigDecimal(0);
-	private Double lunch = new Double(0); // BigDecimal(0);
-	private Double diner = new Double(0); // BigDecimal(0);
+	private Double sundries = Double.valueOf(0); // BigDecimal(0);
+	private Double lunch = Double.valueOf(0); // BigDecimal(0);
+	private Double diner = Double.valueOf(0); // BigDecimal(0);
 	private String airport;
 //	private String on_blocks_date_string = date_format.format(on_blocks_datetime.getTime());
 //	private String on_blocks_time_string = time_format.format(on_blocks_datetime.getTime());
