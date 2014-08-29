@@ -313,6 +313,7 @@ public class MainActivity extends FragmentActivity {
 		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
 		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
 		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
+		output_view.setText(stopje.getAllowance().toString());
 		
 //		output_view.setText(Double.toString(stopje.getAllowance()));
 		

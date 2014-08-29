@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import java.util.*;
+import android.os.Bundle;
 
 public class StopOver {
 	private String airport;
-	private Calendar onblocksdatetime;
-	private Calendar offblocksdatetime;
-	private Time onblockstime;
-	private Time offblockstime;
+	private Calendar onblocksdatetime = Calendar.getInstance();
+	private Calendar offblocksdatetime = Calendar.getInstance();
+	private Time onblockstime = new Time();
+	private Time offblockstime = new Time();
 	private Double sundries_24 = 0d;
 	private Double lunch_allowance = 0d;
 	private Double diner_allowance = 0d;
@@ -31,12 +32,17 @@ public class StopOver {
 	}
 	
 	public StopOver() {
-		onblocksdatetime = Calendar.getInstance();
-		offblocksdatetime = Calendar.getInstance();
-		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
-		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		onblockstime.setToNow();//(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		offblockstime.setToNow();//(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 		
 	}
+	
+//	protected void onCreate(Bundle savedInstanceState) {
+//		onblocksdatetime = Calendar.getInstance();
+//		offblocksdatetime = Calendar.getInstance();
+//		onblockstime.setToNow();//(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+//		offblockstime.setToNow();//(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+//	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	//// SET METHODS
@@ -47,6 +53,8 @@ public class StopOver {
 
 		onblocksdatetime.setTime(on_blocks.getTime());
 		offblocksdatetime.setTime(off_blocks.getTime());
+		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 		this.airport = airport;
 		this.sundries_24 = sundries_24;
 		this.lunch_allowance = lunch_allowance;
@@ -131,7 +139,7 @@ public class StopOver {
 		return offblocksdatetime.get(Calendar.MINUTE);
 	}
 	
-	public double getAllowance() {
+	public Double getAllowance() {
 		return getSundries() + (calcNrLunch() * lunch_allowance) + (calcNrDiner() * diner_allowance);		
 	}
 
