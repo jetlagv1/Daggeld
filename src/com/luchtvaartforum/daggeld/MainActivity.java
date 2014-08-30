@@ -16,6 +16,7 @@ import android.view.textservice.*;
 import java.math.*;
 import android.renderscript.*;
 import android.app.*;
+import android.text.*;
 
 public class MainActivity extends FragmentActivity {
 
@@ -163,61 +164,193 @@ public class MainActivity extends FragmentActivity {
 //				updateValues();
 			}
 		});
+		
+		on_blocks_date_view.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+		
+		on_blocks_time_view.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
 			
-		sundries_edittext.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-//				Toast.makeText(getApplicationContext(), v.toString(), Toast.LENGTH_SHORT).show();
-				if(hasFocus) { return; }
-				
-//				if(sundries_edittext.getText().toString().contentEquals( "" )) {
-//					stopje.setSundries(0d);
-//				}
-//				else {
-//					stopje.setSundries(new Double(sundries_edittext.getText().toString()));
-//				}
-				updateValues();
-			}
-		});
-		
-		lunch_edittext.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if(hasFocus) { return; }
+		off_blocks_date_view.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					testClickButton();
+				}
 
-//				if(lunch_edittext.getText().toString().contentEquals( "" )) {
-//					stopje.setLunchAllowance(0d);
-//				}
-//				else {
-//					stopje.setLunchAllowance(new Double(lunch_edittext.getText().toString()));
-//				}
-				updateValues();
-			}
-		});
-		
-		diner_edittext.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if(hasFocus) { return; }
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
 
-//				if(diner_edittext.getText().toString().contentEquals( "" )) {
-//					stopje.setDinerAllowance(0d);
-//				}
-//				else {
-//					stopje.setDinerAllowance(new Double(diner_edittext.getText().toString()));
-//				}
-				updateValues();
-			}
-		});
-		
-		airport_edittext.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+			
+		off_blocks_time_view.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+			
+		sundries_edittext.addTextChangedListener(new TextWatcher() {
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if(hasFocus) { return; }
-				updateValues();
+			public void onTextChanged(CharSequence s, int start, int before, int count)
+			{
+				if (s.toString().contentEquals("")) {
+					stopje.setSundries_24(0d);
+				}
+				else {
+					Double d = Double.parseDouble(s.toString());
+					stopje.setSundries_24(d);
+				}
+				Toast.makeText(getApplicationContext(), "sundries text changed", Toast.LENGTH_SHORT).show();
+				testClickButton();
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after)
+			{
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void afterTextChanged(Editable s)
+			{
+				// TODO Auto-generated method stub
 			}
 		});
 		
+		lunch_edittext.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					if (s.toString().contentEquals("")) {
+						stopje.setLunchAllowance(0d);
+					}
+					else {
+						Double d = Double.parseDouble(s.toString());
+						stopje.setLunchAllowance(d);
+					}
+					Toast.makeText(getApplicationContext(), "lunch text changed", Toast.LENGTH_SHORT).show();
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+		
+		diner_edittext.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					if (s.toString().contentEquals("")) {
+						stopje.setDinerAllowance(0d);
+					}
+					else {
+						Double d = Double.parseDouble(s.toString());
+						stopje.setDinerAllowance(d);
+					}
+					Toast.makeText(getApplicationContext(), "diner text changed", Toast.LENGTH_SHORT).show();
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+			
+		airport_edittext.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					stopje.setAirport(s.toString());
+					Toast.makeText(getApplicationContext(), "airport text changed", Toast.LENGTH_SHORT).show();
+					testClickButton();
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTextChanged(Editable s)
+				{
+					// TODO Auto-generated method stub
+				}
+			});
+			
 		((Button) findViewById(R.id.buttonOutput)).setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -313,7 +446,7 @@ public class MainActivity extends FragmentActivity {
 		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
 		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
 		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
-		output_view.setText(stopje.getAllowance().toString());
+		
 		
 //		output_view.setText(Double.toString(stopje.getAllowance()));
 		
@@ -323,12 +456,13 @@ public class MainActivity extends FragmentActivity {
 
     public void testClickButton() {
 		//String s = sundries_edittext.getText().toString();
-		updateValues();
-		if(sundries_edittext.getText().toString().contentEquals( "" )) {
-			Toast.makeText(getApplicationContext(), "leeg", Toast.LENGTH_SHORT).show();
-		}
-		else {
-			Toast.makeText(getApplicationContext(), "niet leeg", Toast.LENGTH_SHORT).show();
-		}
+//		updateValues();
+		output_view.setText(stopje.getAllowance().toString());
+//		if(sundries_edittext.getText().toString().contentEquals( "" )) {
+//			Toast.makeText(getApplicationContext(), "leeg", Toast.LENGTH_SHORT).show();
+//		}
+//		else {
+//			Toast.makeText(getApplicationContext(), "niet leeg", Toast.LENGTH_SHORT).show();
+//		}
     }
 }
