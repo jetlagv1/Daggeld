@@ -32,8 +32,8 @@ public class StopOver {
 	}
 	
 	public StopOver() {
-		onblockstime.setToNow();//(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
-		offblockstime.setToNow();//(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		onblockstime.set(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
+		offblockstime.set(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
 		
 	}
 	
