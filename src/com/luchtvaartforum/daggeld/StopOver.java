@@ -119,6 +119,10 @@ public class StopOver {
 		return onblocksdatetime;
 	}
 	
+	public Integer getOnBlocksTime() {
+		return onblockstime.hour;
+	}
+	
 	public int getOnBlockTimeHour() {
 		return onblocksdatetime.get(Calendar.HOUR_OF_DAY);
 	}
@@ -129,6 +133,10 @@ public class StopOver {
 	
 	public Calendar getOffBlocksDatetime() {
 		return offblocksdatetime;
+	}
+	
+	public Integer getOffBlocksTime() {
+		return offblockstime.hour;
 	}
 	
 	public int getOffBlockTimeHour() {

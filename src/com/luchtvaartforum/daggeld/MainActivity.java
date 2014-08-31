@@ -100,9 +100,13 @@ public class MainActivity extends FragmentActivity {
 			diner = savedInstanceState.getDouble("diner");
 			stopje.setStopOver(airport, on_blocks_datetime, off_blocks_datetime, sundries, lunch, diner);
 //			Toast.makeText(getApplicationContext(), "tataaa!", Toast.LENGTH_SHORT).show();
-//			updateValues();
+
 		}
-		updateValues();
+		
+		on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
+		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
+		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
+		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
 		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
 
         on_blocks_date_view.setOnClickListener(new TextView.OnClickListener() {
@@ -111,12 +115,8 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = on_blocks_datetime;
 				selected_textview = on_blocks_date_view;
 				selected_format = date_format;
-//				showDatePickerDialog(v);
-//				stopje.setOnBlocks(selected_datetime);
-//				on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
 				DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "datePicker");
-//				updateValues();
 //				Toast.makeText(getApplicationContext(), "onclickfinished", Toast.LENGTH_SHORT).show();
 			}
 		});
@@ -127,13 +127,8 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = on_blocks_datetime;
 				selected_textview = on_blocks_time_view;
 				selected_format = time_format;
-//				showTimePickerDialog(v);
 				DialogFragment newFragment = new TimePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "timePicker");
-//				stopje.setOnBlocks(selected_datetime);
-//				updateValues();
-				
-				
 			}
 		});
 		
@@ -143,11 +138,8 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = off_blocks_datetime;
 				selected_textview = off_blocks_date_view;
 				selected_format = date_format;
-//				showDatePickerDialog(v);
 				DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "datePicker");
-//				stopje.setOffBlocks(selected_datetime);
-//				updateValues();
 			}
 		});
 
@@ -157,11 +149,8 @@ public class MainActivity extends FragmentActivity {
 				selected_datetime = off_blocks_datetime;
 				selected_textview = off_blocks_time_view;
 				selected_format = time_format;
-//				showTimePickerDialog(v);
 				DialogFragment newFragment = new TimePickerFragment(selected_textview, selected_datetime, selected_format);
 				newFragment.show(getSupportFragmentManager(), "timePicker");
-//				stopje.setOffBlocks(selected_datetime);
-//				updateValues();
 			}
 		});
 		
@@ -169,7 +158,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -181,6 +170,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
+					stopje.setOnBlocks(on_blocks_datetime);
 					// TODO Auto-generated method stub
 				}
 			});
@@ -189,7 +179,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -201,6 +191,8 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
+					stopje.setOnBlocks(on_blocks_datetime);
+					Toast.makeText(getApplicationContext(),stopje.getOnBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
 			});
@@ -209,7 +201,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -221,6 +213,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
+					stopje.setOffBlocks(off_blocks_datetime);
 					// TODO Auto-generated method stub
 				}
 			});
@@ -229,7 +222,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -241,6 +234,8 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
+					stopje.setOffBlocks(off_blocks_datetime);
+					Toast.makeText(getApplicationContext(),stopje.getOffBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
 			});
@@ -257,7 +252,7 @@ public class MainActivity extends FragmentActivity {
 					stopje.setSundries_24(d);
 				}
 				Toast.makeText(getApplicationContext(), "sundries text changed", Toast.LENGTH_SHORT).show();
-				testClickButton();
+				output_view.setText(stopje.getAllowance().toString());
 			}
 
 			@Override
@@ -285,7 +280,7 @@ public class MainActivity extends FragmentActivity {
 						stopje.setLunchAllowance(d);
 					}
 					Toast.makeText(getApplicationContext(), "lunch text changed", Toast.LENGTH_SHORT).show();
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -313,7 +308,7 @@ public class MainActivity extends FragmentActivity {
 						stopje.setDinerAllowance(d);
 					}
 					Toast.makeText(getApplicationContext(), "diner text changed", Toast.LENGTH_SHORT).show();
-					testClickButton();
+					output_view.setText(stopje.getAllowance().toString());
 				}
 
 				@Override
@@ -331,22 +326,32 @@ public class MainActivity extends FragmentActivity {
 			
 		airport_edittext.addTextChangedListener(new TextWatcher() {
 				@Override
-				public void onTextChanged(CharSequence s, int start, int before, int count)
+				public void onTextChanged(CharSequence iata, int start, int before, int count)
 				{
-					stopje.setAirport(s.toString());
-					Toast.makeText(getApplicationContext(), "airport text changed", Toast.LENGTH_SHORT).show();
-					testClickButton();
+					
 				}
 
 				@Override
-				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				public void beforeTextChanged(CharSequence iata, int start, int count, int after)
 				{
+//					String IATA = iata.toString().toUpperCase();
+//					Integer strt = start;
+//					Integer cnt = count;
+//					Integer aftr = after;
+//					stopje.setAirport(IATA);
+//					Toast.makeText(getApplicationContext(), stopje.getAirport() + " start = " + strt.toString() + " count = " + cnt.toString() + " after = " + aftr.toString(), Toast.LENGTH_SHORT).show();
+//					output_view.setText(stopje.getAllowance().toString());
 					// TODO Auto-generated method stub
 				}
 
 				@Override
-				public void afterTextChanged(Editable s)
+				public void afterTextChanged(Editable iata)
 				{
+					String IATA = iata.toString().toUpperCase();
+					stopje.setAirport(IATA);
+					Toast.makeText(getApplicationContext(), stopje.getAirport(), Toast.LENGTH_SHORT).show();
+					output_view.setText(stopje.getAllowance().toString());
+//					airport_edittext.setText(IATA);
 					// TODO Auto-generated method stub
 				}
 			});
@@ -354,11 +359,9 @@ public class MainActivity extends FragmentActivity {
 		((Button) findViewById(R.id.buttonOutput)).setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				testClickButton();
+//				output_view.setText(stopje.getAllowance().toString());
 			}
 		});
-//		updateValues();
-//		Toast.makeText(getApplicationContext(), date_format.format(stopje.getOffBlocksDatetime().getTime()), Toast.LENGTH_SHORT).show();
 	}
 
     @Override
@@ -366,103 +369,5 @@ public class MainActivity extends FragmentActivity {
 //      Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-    
-//    public void showDatePickerDialog(View v) {
-//        DialogFragment newFragment = new DatePickerFragment(selected_textview, selected_datetime, selected_format);
-//        newFragment.show(getSupportFragmentManager(), "datePicker");
-//		Toast.makeText(getApplicationContext(), "showdatepickermethodcomplete", Toast.LENGTH_SHORT).show();
-//		
-//    }
-    
-//    public void showTimePickerDialog(View v, Calendar sldt) {
-//        DialogFragment newFragment = new TimePickerFragment(stopje, sldt);
-//        newFragment.show(getSupportFragmentManager(), "timePicker");
-//    }
-
-	 public void updateValues() {
-		
-//		stopje.setStopOver(airport, on_blocks_datetime, off_blocks_datetime, sundries.doubleValue(), lunch.doubleValue(), diner.doubleValue());
-//
-//		if(stopje.getSundries_24() <= 0) {
-//			//sundries = BigDecimal.valueOf(0d);
-//			sundries_edittext.setText("");
-//		}
-//		else {
-//			sundries_edittext.setText(stopje.getSundries_24().toString());
-//		}
-//		
-//		if(stopje.getLunchAllowance() <= 0) {
-//			//lunch = BigDecimal.valueOf(0d);
-//			lunch_edittext.setText("");
-//		}
-//		else {
-//			lunch_edittext.setText(stopje.getLunchAllowance().toString());
-//		}
-//		
-//		if(stopje.getDinerAllowance() <= 0) {
-//			//diner = BigDecimal.valueOf(0d);
-//			diner_edittext.setText("");
-//		}
-//		else {
-//			diner_edittext.setText(stopje.getDinerAllowance().toString());
-//		}
-		
-		//		lunch_edittext.setText(stopje.getLunchAllowance().toString());
-//		diner_edittext.setText(stopje.getDinerAllowance().toString());
-		
-//		if(sundries_edittext.getText().toString().contentEquals( "" )) {
-//			stopje.setSundries_24(0d);
-//		}
-//		else {
-//			stopje.setSundries_24(new Double(sundries_edittext.getText().toString()));
-//		}
-//		
-//		if(lunch_edittext.getText().toString().contentEquals( "" )) {
-//			stopje.setLunchAllowance(0d);
-//		}
-//		else {
-//			stopje.setLunchAllowance(new Double(lunch_edittext.getText().toString()));
-//		}
-//		
-//		if(diner_edittext.getText().toString().contentEquals( "" )) {
-//			stopje.setDinerAllowance(0d);
-//		}
-//		else {
-//			stopje.setDinerAllowance(new Double(diner_edittext.getText().toString()));
-//		}
-//		
-//		if(airport_edittext.getText().toString().contentEquals( "")) {
-//			stopje.setAirport("");
-//		}
-//		else {
-//			stopje.setAirport(airport_edittext.getText().toString());
-//		}
-		
-		stopje.setOnBlocks(on_blocks_datetime);
-		stopje.setOffBlocks(off_blocks_datetime);
-		
-		on_blocks_date_view.setText(date_format.format(stopje.getOnBlocksDatetime().getTime()));
-		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
-		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
-		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
-		
-		
-//		output_view.setText(Double.toString(stopje.getAllowance()));
-		
-		//Toast.makeText(getApplicationContext(), "updated", Toast.LENGTH_SHORT).show();
-//		Toast.makeText(getApplicationContext(), Double.toString(stopje.getAllowance()), Toast.LENGTH_SHORT).show();
-	}
-
-    public void testClickButton() {
-		//String s = sundries_edittext.getText().toString();
-//		updateValues();
-		output_view.setText(stopje.getAllowance().toString());
-//		if(sundries_edittext.getText().toString().contentEquals( "" )) {
-//			Toast.makeText(getApplicationContext(), "leeg", Toast.LENGTH_SHORT).show();
-//		}
-//		else {
-//			Toast.makeText(getApplicationContext(), "niet leeg", Toast.LENGTH_SHORT).show();
-//		}
     }
 }
