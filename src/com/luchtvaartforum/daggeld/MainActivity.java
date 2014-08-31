@@ -158,6 +158,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
+					stopje.setOnBlocks(on_blocks_datetime);
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -170,7 +171,6 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
-					stopje.setOnBlocks(on_blocks_datetime);
 					// TODO Auto-generated method stub
 				}
 			});
@@ -179,6 +179,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
+					stopje.setOnBlocks(on_blocks_datetime);
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -191,7 +192,6 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
-					stopje.setOnBlocks(on_blocks_datetime);
 					Toast.makeText(getApplicationContext(),stopje.getOnBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
@@ -201,6 +201,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
+					stopje.setOffBlocks(off_blocks_datetime);
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -213,7 +214,6 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
-					stopje.setOffBlocks(off_blocks_datetime);
 					// TODO Auto-generated method stub
 				}
 			});
@@ -222,6 +222,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
+					stopje.setOffBlocks(off_blocks_datetime);
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -234,7 +235,6 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable s)
 				{
-					stopje.setOffBlocks(off_blocks_datetime);
 					Toast.makeText(getApplicationContext(),stopje.getOffBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
@@ -264,6 +264,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void afterTextChanged(Editable s)
 			{
+				
 				// TODO Auto-generated method stub
 			}
 		});
