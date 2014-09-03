@@ -202,7 +202,7 @@ public class StopOver {
 	private Double calcSundries() {
 		Double s = 0d;
 		Integer hours = calcHoursMinusDaysOnGround();
-		switch(calcHoursMinusDaysOnGround()) {
+		switch(hours) {
 			case 0: case 1: case 2:
 				s = 0.0;
 				break;
@@ -221,8 +221,7 @@ public class StopOver {
 			default:
 			
 				throw new IllegalArgumentException("s = " + hours.toString());
-		}
-		Toast.makeText (getApplicationContext(), s.toString(), Toast.LENGTH_SHORT).show();
+		}		
 		return (s + calcDaysOnGround()) * sundries_24;
 	}
 	
