@@ -99,7 +99,7 @@ public class MainActivity extends FragmentActivity {
 			lunch = savedInstanceState.getDouble("lunch");
 			diner = savedInstanceState.getDouble("diner");
 			stopje.setStopOver(airport, on_blocks_datetime, off_blocks_datetime, sundries, lunch, diner);
-//			Toast.makeText(getApplicationContext(), "tataaa!", Toast.LENGTH_SHORT).show();
+//			Toast.makeText(getApplicationContext(), airport, Toast.LENGTH_SHORT).show();
 
 		}
 		
@@ -107,7 +107,7 @@ public class MainActivity extends FragmentActivity {
 		on_blocks_time_view.setText(time_format.format(stopje.getOnBlocksDatetime().getTime()));
 		off_blocks_date_view.setText(date_format.format(stopje.getOffBlocksDatetime().getTime()));
 		off_blocks_time_view.setText(time_format.format(stopje.getOffBlocksDatetime().getTime()));
-		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(), "created", Toast.LENGTH_SHORT).show();
 
         on_blocks_date_view.setOnClickListener(new TextView.OnClickListener() {
 			@Override
@@ -192,7 +192,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOnBlocks(on_blocks_datetime);
-					Toast.makeText(getApplicationContext(),stopje.getOnBlocksTime().toString(), Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(),stopje.getOnBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
 			});
@@ -235,7 +235,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOffBlocks(off_blocks_datetime);
-					Toast.makeText(getApplicationContext(),stopje.getOffBlocksTime().toString(), Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(),stopje.getOffBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
 			});
@@ -251,7 +251,7 @@ public class MainActivity extends FragmentActivity {
 					Double d = Double.parseDouble(s.toString());
 					stopje.setSundries_24(d);
 				}
-				Toast.makeText(getApplicationContext(), "sundries text changed", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(getApplicationContext(), "sundries text changed", Toast.LENGTH_SHORT).show();
 				output_view.setText(stopje.getAllowance().toString());
 			}
 
@@ -279,7 +279,7 @@ public class MainActivity extends FragmentActivity {
 						Double d = Double.parseDouble(s.toString());
 						stopje.setLunchAllowance(d);
 					}
-					Toast.makeText(getApplicationContext(), "lunch text changed", Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(), "lunch text changed", Toast.LENGTH_SHORT).show();
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -307,7 +307,7 @@ public class MainActivity extends FragmentActivity {
 						Double d = Double.parseDouble(s.toString());
 						stopje.setDinerAllowance(d);
 					}
-					Toast.makeText(getApplicationContext(), "diner text changed", Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(), "diner text changed", Toast.LENGTH_SHORT).show();
 					output_view.setText(stopje.getAllowance().toString());
 				}
 
@@ -328,7 +328,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence iata, int start, int before, int count)
 				{
-					
+					// TODO Auto-generated method stub
 				}
 
 				@Override
@@ -349,7 +349,7 @@ public class MainActivity extends FragmentActivity {
 				{
 					String IATA = iata.toString().toUpperCase();
 					stopje.setAirport(IATA);
-					Toast.makeText(getApplicationContext(), stopje.getAirport(), Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(), stopje.getAirport(), Toast.LENGTH_SHORT).show();
 					output_view.setText(stopje.getAllowance().toString());
 //					airport_edittext.setText(IATA);
 					// TODO Auto-generated method stub

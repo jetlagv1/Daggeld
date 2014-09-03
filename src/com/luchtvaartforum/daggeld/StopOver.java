@@ -7,6 +7,8 @@ import android.text.format.DateFormat;
 import android.text.format.Time;
 import java.util.*;
 import android.os.Bundle;
+import android.widget.Toast;
+
 
 public class StopOver {
 	private String airport;
@@ -198,7 +200,8 @@ public class StopOver {
 	}
 
 	private Double calcSundries() {
-		Double s;
+		Double s = 0d;
+		Integer hours = calcHoursMinusDaysOnGround();
 		switch(calcHoursMinusDaysOnGround()) {
 			case 0: case 1: case 2:
 				s = 0.0;
@@ -216,8 +219,10 @@ public class StopOver {
 				s = 1.0;
 				break;
 			default:
-				throw new IllegalArgumentException();
+			
+				throw new IllegalArgumentException("s = " + hours.toString());
 		}
+		Toast.makeText (getApplicationContext(), s.toString(), Toast.LENGTH_SHORT).show();
 		return (s + calcDaysOnGround()) * sundries_24;
 	}
 	
