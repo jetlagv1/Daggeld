@@ -177,7 +177,7 @@ public class StopOver {
 		if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && ((calcMinutesMinusDaysOnGround() > 180) || (calcDaysOnGround() > 0)))
 			return true;
 			
-		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && onblocksdatetime.before(offblocksdatetime) && offblockstime.before(onblockstime))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (onblocksdatetime.before(offblocksdatetime) && (offblockstime.before(onblockstime))  ))
 			return true;
 			
 		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (calcHoursMinusDaysOnGround() > 13))
