@@ -158,7 +158,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					output_view.setText(stopje.getAllowance().toString());
+					
 				}
 
 				@Override
@@ -171,6 +171,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOnBlocks(on_blocks_datetime);
+					output_view.setText(stopje.getAllowance().toString());
 					// TODO Auto-generated method stub
 				}
 			});
@@ -179,7 +180,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					output_view.setText(stopje.getAllowance().toString());
+					
 				}
 
 				@Override
@@ -192,6 +193,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOnBlocks(on_blocks_datetime);
+					output_view.setText(stopje.getAllowance().toString());
 //					Toast.makeText(getApplicationContext(),stopje.getOnBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}
@@ -201,7 +203,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					output_view.setText(stopje.getAllowance().toString());
+					
 				}
 
 				@Override
@@ -214,6 +216,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOffBlocks(off_blocks_datetime);
+					output_view.setText(stopje.getAllowance().toString());
 					// TODO Auto-generated method stub
 				}
 			});
@@ -222,7 +225,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count)
 				{
-					output_view.setText(stopje.getAllowance().toString());
+					
 				}
 
 				@Override
@@ -235,6 +238,7 @@ public class MainActivity extends FragmentActivity {
 				public void afterTextChanged(Editable s)
 				{
 					stopje.setOffBlocks(off_blocks_datetime);
+					output_view.setText(stopje.getAllowance().toString());
 //					Toast.makeText(getApplicationContext(),stopje.getOffBlocksTime().toString(), Toast.LENGTH_SHORT).show();
 					// TODO Auto-generated method stub
 				}

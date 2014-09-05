@@ -174,10 +174,13 @@ public class StopOver {
 	
 	private boolean isLunch() {
 			
-		if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && ((calcMinutesMinusDaysOnGround() > 180) || (calcDaysOnGround() > 0)))
+		if (calcMinutesOnGround() < 180)
+			return false;
+			
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13))
 			return true;
 			
-		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (onblocksdatetime.before(offblocksdatetime) && (offblockstime.before(onblockstime))  ))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 13) && offblockstime.before(onblockstime))
 			return true;
 			
 		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 13) && (calcHoursMinusDaysOnGround() > 13))
@@ -187,10 +190,14 @@ public class StopOver {
 	}
 
 	private boolean isDiner() {
-		if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && ((calcMinutesMinusDaysOnGround() > 180) || (calcDaysOnGround() > 0)))
+		
+		if (calcMinutesOnGround() < 180)
+			return false;
+			
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20))
 			return true;
 
-		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && onblocksdatetime.before(offblocksdatetime) && offblockstime.before(onblockstime))
+		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) < 20) && offblockstime.before(onblockstime))
 			return true;
 			
 		else if ((onblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && (offblocksdatetime.get(Calendar.HOUR_OF_DAY) >= 20) && (calcHoursMinusDaysOnGround() > 4))
@@ -202,7 +209,7 @@ public class StopOver {
 	private Double calcSundries() {
 		Double s = 0d;
 		Integer hours = calcHoursMinusDaysOnGround();
-		switch(hours) {
+		switch (hours) {
 			case 0: case 1: case 2:
 				s = 0.0;
 				break;
@@ -220,27 +227,27 @@ public class StopOver {
 				break;
 			default:
 			
-				throw new IllegalArgumentException("s = " + hours.toString());
+				throw new IllegalArgumentException("hours = " + hours.toString());
 		}		
 		return (s + calcDaysOnGround()) * sundries_24;
 	}
 	
 	public Integer calcHoursMinusDaysOnGround() {
-		return calcMinutesMinusDaysOnGround() / 60;
+		return calcMinutesMinusDaysOnGround().intValue() / 60;
 	}
 	
 	public Integer calcDaysOnGround() {		
-		return (calcMinutesOnGround() / 1440);
+		return (calcMinutesOnGround().intValue() / 1440);
 	}
 	
-	public Integer calcMinutesMinusDaysOnGround() {
-		return (calcMinutesOnGround() - (calcDaysOnGround() * 1440));
+	public Long calcMinutesMinusDaysOnGround() {
+		return (calcMinutesOnGround() - (calcDaysOnGround().longValue() * 1440));
 	}
 	
-	public Integer calcMinutesOnGround() {
+	public Long calcMinutesOnGround() {
 		if (offblocksdatetime.before(onblocksdatetime))
-			return 0;
-		return (int) (offblocksdatetime.getTimeInMillis() - onblocksdatetime.getTimeInMillis()) / 60000;
+			return 0l;
+		return (Long) (offblocksdatetime.getTimeInMillis() - onblocksdatetime.getTimeInMillis()) / 60000;
 	}
 	
 	public Integer calcNrLunch() {
