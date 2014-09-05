@@ -39,12 +39,6 @@ public class StopOver {
 		
 	}
 	
-//	protected void onCreate(Bundle savedInstanceState) {
-//		onblocksdatetime = Calendar.getInstance();
-//		offblocksdatetime = Calendar.getInstance();
-//		onblockstime.setToNow();//(0, onblocksdatetime.get(Calendar.MINUTE), onblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
-//		offblockstime.setToNow();//(0, offblocksdatetime.get(Calendar.MINUTE), offblocksdatetime.get(Calendar.HOUR_OF_DAY), 0, 0, 0);
-//	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	//// SET METHODS
