@@ -4,7 +4,9 @@
 	android:layout_height="match_parent"
 	android:layout_width="match_parent">
 
-	<ListView
+	<ListView 
+		android:id="@+id/ListView01"
+		android:text="@+id/ListView01"
 		android:layout_height="fill_parent"
 		android:layout_width="wrap_content"/>
 
