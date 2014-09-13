@@ -35,7 +35,5 @@ implements TimePickerDialog.OnTimeSetListener {
 		selected_datetime.set(Calendar.HOUR_OF_DAY, h);
 		selected_datetime.set(Calendar.MINUTE, m);
 		selected_textview.setText(date_format.format(selected_datetime.getTime()));
-		//updateValues();
-		//testClickButton();
 	}
 }

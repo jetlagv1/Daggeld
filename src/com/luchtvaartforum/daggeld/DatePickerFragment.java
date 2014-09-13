@@ -15,7 +15,6 @@ implements DatePickerDialog.OnDateSetListener {
 	private Calendar selected_datetime;
 	private TextView  selected_textview;
 	SimpleDateFormat date_format;
-//	StopOver stop;
 
 	public DatePickerFragment(TextView sltv, Calendar sldt, SimpleDateFormat sldf) {
 		this.selected_datetime = sldt;
@@ -35,14 +34,7 @@ implements DatePickerDialog.OnDateSetListener {
 	@Override
 	public void onDateSet(DatePicker p1, int year, int month, int day)
 	{
-//		Toast.makeText(context, "on blocks date clicked & set", Toast.LENGTH_SHORT).show();
 		selected_datetime.set(year, month, day);
 		selected_textview.setText(date_format.format(selected_datetime.getTime()));
 	}
-
-	//public void  view, int y, int m, int d) {
-		//selected_datetime.set(y, m, d);
-		//updateValues();
-		//testClickButton();
-	//}
 }
