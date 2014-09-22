@@ -16,6 +16,7 @@ import android.view.textservice.*;
 import java.math.*;
 import android.renderscript.*;
 import android.app.*;
+import android.content.Intent;
 import android.text.*;
 
 public class MainActivity extends FragmentActivity {
@@ -363,7 +364,11 @@ public class MainActivity extends FragmentActivity {
 		((Button) findViewById(R.id.buttonOutput)).setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				output_view.setText(stopje.getAllowance().toString());
+				Intent in = new Intent(MainActivity.this, ListActivity.class);
+
+				startActivity(in);
+
+				finish();
 			}
 		});
 	}
