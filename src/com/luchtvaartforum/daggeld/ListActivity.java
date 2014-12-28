@@ -1,6 +1,6 @@
 package com.luchtvaartforum.daggeld;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.*;
+import android.view.*;
 
 public class ListActivity extends Activity {
 
