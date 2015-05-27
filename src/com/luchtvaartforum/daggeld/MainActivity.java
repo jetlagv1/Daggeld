@@ -46,6 +46,7 @@ public class MainActivity extends FragmentActivity {
 	private EditText lunch_edittext;
 	private EditText diner_edittext;
 	private EditText airport_edittext;
+	private StopOver testStopje = new StopOver();
 
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
